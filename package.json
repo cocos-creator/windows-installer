@@ -16,7 +16,6 @@
     "tdd": "ava --watch"
   },
   "dependencies": {
-    "asar": "~0.10.0",
     "bluebird": "^3.3.4",
     "debug": "^2.2.0",
     "fs-extra": "^0.26.7",
