@@ -82,7 +82,7 @@ let createWindowsInstaller = exports.createWindowsInstaller = (() => {
 
     // code sign
     let codesignFile = _path2.default.join(process.env.HOME, '.ssh', 'codesignCmd_update.txt');
-    if (fsUtils.fileExists(codesignFile)) {
+    if (yield fsUtils.fileExists(codesignFile)) {
       let codesignArgs = yield fsUtils.readFile(codesignFile, 'utf8');
       let codesignArgArr = codesignArgs.split(' ');
       yield (0, _spawnPromise2.default)('signtool', codesignArgArr);      
