@@ -16,6 +16,7 @@
     "tdd": "ava --watch"
   },
   "dependencies": {
+    "creator-asar": "cocos-creator/creator-asar",
     "bluebird": "^3.3.4",
     "debug": "^2.2.0",
     "fs-extra": "^0.26.7",

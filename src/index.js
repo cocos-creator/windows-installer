@@ -81,9 +81,12 @@ let createWindowsInstaller = exports.createWindowsInstaller = (() => {
     }
 
     // code sign
-    let codesignArgs = yield fsUtils.readFile(_path2.default.join(process.env.HOME, '.ssh', 'codesignCmd_update.txt'), 'utf8');
-    let codesignArgArr = codesignArgs.split(' ');
-    yield (0, _spawnPromise2.default)('signtool', codesignArgArr);
+    let codesignFile = _path2.default.join(process.env.HOME, '.ssh', 'codesignCmd_update.txt');
+    if (fsUtils.fileExists(codesignFile)) {
+      let codesignArgs = yield fsUtils.readFile(codesignFile, 'utf8');
+      let codesignArgArr = codesignArgs.split(' ');
+      yield (0, _spawnPromise2.default)('signtool', codesignArgArr);      
+    }
 
     const defaultLoadingGif = _path2.default.join(__dirname, '..', 'resources', 'install-spinner.gif');
     loadingGif = loadingGif ? _path2.default.resolve(loadingGif) : defaultLoadingGif;
