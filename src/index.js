@@ -1,3 +1,4 @@
+'use strict';
 import template from 'lodash.template';
 import spawn from './spawn-promise';
 import asar from 'creator-asar';
@@ -60,7 +61,7 @@ export async function createWindowsInstaller(options) {
 
   // code sign
   let codesignFile = path.join(process.env.HOME, '.ssh', 'codesignCmd_update.txt');
-  if (yield fsUtils.fileExists(codesignFile)) {
+  if (await fsUtils.fileExists(codesignFile)) {
     let codesignArgs = await fsUtils.readFile(codesignFile, 'utf8');
     let codesignArgArr = codesignArgs.split(' ');
     await spawn('signtool', codesignArgArr);      
